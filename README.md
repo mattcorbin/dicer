@@ -1,1 +1,3 @@
-# diceman
+# dicer
+
+todo
