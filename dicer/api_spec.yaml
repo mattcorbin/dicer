@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Diceman
+  description: Roll some dice!
+  license:
+    name: agpl-3.0
+    url: https://www.gnu.org/licenses/agpl-3.0.en.html
+  version: 1.0.0
+components:
+  schemas:
+    RollResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Number of dice rolled
+        sum:
+          type: integer
+          format: int64
+          description: Total of all dice rolled
+        results:
+          type: array
+          items:
+            type: int32
+paths:
+  /roll/{sides}/{count}:
+    get:
+      description: Rolls {count} number of d{sides} dice.
+      responses:
+        '200':
+          description: Results of dice rolls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollResponse'
